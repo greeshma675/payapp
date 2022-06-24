@@ -1,0 +1,11 @@
+#login{
+    border: #007cd1 2px solid;
+    border-radius: 5px;
+    padding: 25px;
+}
+#intext{
+    border: #007cd1 1px solid ;
+    border-radius: 5px ;
+    width: 250px;
+    height: 50px;
+}

@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cardo&family=Cookie&family=Fredoka:wght@300&family=Hubballi&family=IBM+Plex+Sans+Devanagari&family=M+PLUS+Rounded+1c:wght@100&family=Mulish:wght@200&family=Nanum+Gothic&family=Open+Sans:wght@300&family=Oxygen:wght@300&family=PT+Serif&family=Playball&family=Playfair+Display&family=Prata&family=Raleway:wght@100&family=Roboto+Slab:wght@100&family=Sansita+Swashed:wght@300&display=swap');
+#img1{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
+#a_{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: #120a7c;
+}
+#h3_{
+    font-family: 'Bree Serif', serif;
+    font-size: 22px;
+}
+#a__{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: #007cd1;
+}
+#exampleModalLabel1{
+    font-family: 'Prata', serif;
+    text-align: justify;
+    font-size: 13px;
+}
+.input-group-prepend span{
+    width: 40px;
+    height: 45px;
+    background-color: #007cd1;
+    color:white;
+    border:none;
+    }
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}

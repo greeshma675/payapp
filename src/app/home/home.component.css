@@ -1,0 +1,61 @@
+#h3_{
+    font-family: 'Bree Serif', serif;
+    font-size: 22px;
+}
+#div12{
+    background: aliceblue;
+    height: 300px;
+    width: 100%;
+    padding: 50px;
+}
+#div13{
+    height: 300px;
+    width: 100%;  
+}
+#img5{
+    width: 100%;
+    height: 100%;
+}
+#div_space{
+    padding: 0px;
+}
+#bts{
+    width: 100px;
+    height: 40px;
+    background-color: #007cd1;
+    border: #007cd1 solid 1px;
+    border-radius: 10px;
+    color: white;
+}
+#bts:hover{
+    width: 100px;
+    height: 40px;
+    background-color: white;
+    border: #007cd1 solid 1px;
+    border-radius: 10px;
+    color: #007cd1;
+}
+#emai{
+    width: 70%;
+    height: 40px;
+    border: #999 solid 1px;
+    border-radius: 10px;
+}
+#a__{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+    color: #007cd1;
+}
+#a__:hover{
+    color: blueviolet;
+}
+#h3_{
+    font-family: 'Bree Serif', serif;
+    font-size: 22px;
+}
+#exampleModalLabel1{
+    font-family: 'Prata', serif;
+    text-align: justify;
+    font-size: 13px;
+}
+

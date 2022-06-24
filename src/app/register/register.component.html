@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMarket</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+    <!-- <script>
+      var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+      var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+      })
+      </script> -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <script src="https://kit.fontawesome.com/b029678fb8.js" crossorigin="anonymous"></script>
+
+</head>
+<body >
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light" >
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <a class="navbar-brand text-white" href="#"><img id="img1" src="../assets/el2.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-0 mb-2 mb-lg-0 ms-auto" id="nav">
+            
+            <li>
+              <a class="nav-link text-black"><label id="a_"  routerLink="../login"><strong>Login</strong></label></a>
+              </li>
+                <li>
+                  <a class="nav-link text-black" ><label id="a_"><strong>News</strong></label></a>
+                  </li>
+            
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+  </div>
+<div class="container row">
+    <div class="col-4"></div>
+        <div class="col-4" id="login" >
+            <form action="" [formGroup]="registerForm">
+                    <h4 style="text-align: center;">Register</h4>
+                    <div class="input-group form-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter name" formControlName="cus_name">
+                  </div>
+                  <div *ngIf="this.registerForm.get('cus_name')?.touched&&this.registerForm.get('cus_name')?.errors">Invalid name</div>
+                  <div class="input-group form-group mt-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                    </div>
+                    <textarea name="" id="texta" cols="33" rows="1" placeholder="Enter address" formControlName="cus_address" style="resize:none;border-color: #dee2e6;border-radius: 4px;"></textarea>
+                </div>
+                <div *ngIf="this.registerForm.get('cus_address')?.touched&&this.registerForm.get('cus_address')?.errors">Invalid address</div>
+                <div class="input-group mt-3" >
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    </div>
+                    <input type="phone" class="form-control" placeholder="Enter phone" formControlName="cus_phone">
+                </div>
+                <div *ngIf="this.registerForm.get('cus_phone')?.touched&&this.registerForm.get('cus_phone')?.errors">Invalid phone number</div>
+                <div class="input-group mt-3" >
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="Enter customer ID" formControlName="cus_id">
+              </div>
+              <div *ngIf="this.registerForm.get('cus_id')?.touched&&this.registerForm.get('cus_id')?.errors">Invalid ID</div>
+                  <div class="input-group mt-3" >
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Enter password" formControlName="cus_password">
+                </div>
+                <div *ngIf="this.registerForm.get('cus_password')?.touched&&this.registerForm.get('cus_password')?.errors">Invalid password</div>
+                <div class="mt-3">
+                  <button type="button" class="btn btn-primary w-100" (click)="register()">REGISTER</button>
+                </div>
+                <div class="mt-3">
+                  <label for="">Already registered?
+                    <a routerLink="../login">Login</a>
+                  </label>
+                </div>
+            </form>
+    </div>
+    <div class="col-4"></div>
+</div>
+  <!-- footer -->
+  <br><br><br>
+
+  <div id="div14" class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div id="div15">
+          <img id="img6" src="../../assets/el.jpg" alt="">
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <div id="div16">
+          <h3 id="h3_">Customer Services</h3>
+          <a id="a__" href="">About us</a><br>
+          <a id="a__" href="">FAQ</a><br>
+          <a id="a__" href="">Terms&Conditions</a><br>
+          <a id="a__" href="">Privacy policy</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-6">
+        <div id="div17">
+          <h3 id="h3_">Contact Us</h3>
+          <label id="exampleModalLabel1">
+            Avenue park <br>
+            Abc P O <br>
+            Ernakulam <br>
+          
+          <i id="icon" class="fa-brands fa-whatsapp "></i>+91 9876543210 <br>
+          <i id="icon" class="fa fa-envelope" aria-hidden="true"></i>abc@gmail.com
+        </label>
+          <!-- <h4 id="h4_">Follow us on social</h4>
+          <i id="icon" class="fa-brands fa-instagram"></i>
+          <i id="icon" class="fa-brands fa-facebook"></i>
+          <i id="icon" class="fa-brands fa-facebook-messenger fa-1x"></i> 
+          <i id="icon" class="fa-brands fa-twitter"></i>
+           <i id="icon" class="fa-brands fa-whatsapp-square fa-1x"></i>
+          <i id="icon" class="fa-brands fa-youtube"></i> -->
+        </div>
+      </div>
+    </div>
+  </div>  
+<!-- copyright -->
+<div style="text-align: center;">
+<label for="" style="    font-family: 'Bree Serif', serif; font-size: 12px;  ">Copyright © 2020-2021 Payapp . All Right Reserved</label>
+</div>
+</body>
+</html>
