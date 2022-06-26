@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PayhomeComponent } from './payhome/payhome.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EpayaccountComponent } from './epayaccount/epayaccount.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    PayhomeComponent
+    PayhomeComponent,
+    EpayaccountComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

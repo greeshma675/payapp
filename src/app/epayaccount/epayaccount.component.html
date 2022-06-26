@@ -37,7 +37,7 @@
           <ul class="navbar-nav mr-0 mb-2 mb-lg-0 ms-auto" id="nav">
             
             <li>
-              <a class="nav-link text-black"><label id="a_"  routerLink="../epayac"><strong>E-pay money</strong></label></a>
+              <a class="nav-link text-black"><label id="a_"  routerLink="../payhome"><strong>Pay e-bill</strong></label></a>
               </li>
                 <li>
                   <a class="nav-link text-black" ><label id="a_"><strong>News</strong></label></a>
@@ -52,53 +52,37 @@
       </div>
     </nav>
   </div>
-<div class="container row" *ngIf="pstatus">
+<div class="container row" >
     <div class="col-4"></div>
         <div class="col-4" id="login" >
-            <form action="" [formGroup]="paymentForm" (ngSubmit)="paymoney()" >
-                    <h4 style="text-align: center;">Pay your bill</h4>
+            <form action="">
+                    <h4 style="text-align: center;">Enter subsidy code</h4>
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-user"></i></span>
                       </div>
-                      <input type="text" class="form-control"  style="cursor: none;" readonly [(ngModel)]="cus_id" formControlName="cus_id"  name="cus_id"  id="cus_id">
-                  </div>
-                  <div *ngIf="this.paymentForm.get('cus_id')?.touched&&this.paymentForm.get('cus_id')?.errors">Invalid customer ID</div>
-                  
-                <div class="mt-3">
-                  <label for="">Select type of payment</label><br>
-                  
-                  <input type="radio" id="rad_bank" value="bank" name="epay" (click)="paybank()" checked="true"><label>From bank account</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <input type="radio" id="rad_epay" value="e-pay" name="epay" (click)="payepay()"><label>E-pay money</label>
-                </div>
-                <ng-container>
-                <div class="input-group form-group mt-3" *ngIf="showpaydiv">
+                      <input type="text" class="form-control"  style="cursor: none;" [(ngModel)]="cus_id"  name="cus_id"  id="cus_id">
+                  </div>                  
+                
+                <div class="input-group form-group mt-3">
                   <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-piggy-bank"></i></span>
                   </div>
-                  <input type="text" class="form-control"  placeholder="Enter account number" formControlName="cus_acno" >
+                  <input type="text" class="form-control"  placeholder="Enter subsidy code">
               </div>
-            </ng-container>
-              <div *ngIf="this.paymentForm.get('cus_acno')?.touched&&this.paymentForm.get('cus_acno')?.errors">Invalid account number</div>
-                <div class="input-group form-group mt-3">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-money-bill"></i></span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Enter amount to pay" formControlName="cus_money" >
-              </div>
-                <div *ngIf="this.paymentForm.get('cus_money')?.touched&&this.paymentForm.get('cus_money')?.errors">Invalid amount</div>
-                 
                   <div class="mt-3">
-                  <button type="submit" class="btn btn-primary w-100">Pay</button>
+                  <button type="submit" class="btn btn-primary w-100">submit</button>
                 </div>
             </form>
-            
     </div>
     <div class="col-4"></div>
 </div>
 <div>
-  <h4 *ngIf="!pstatus">No new bills available</h4>
-</div>
+    <h5 style="text-align:left">Your E-pay account balance is 0</h5>
+    <label for="">**E-pay account balance cannot be transfer to your bank account</label><br>
+    <label for="">**You will credited with 50Rs. on your first transaction</label><br>
+    <label for="">**Terms and conditions apply</label>
+  </div>
 </body>
 
 </html>

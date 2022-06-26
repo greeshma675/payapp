@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EpayaccountComponent } from './epayaccount/epayaccount.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PayhomeComponent } from './payhome/payhome.component';
@@ -16,6 +17,9 @@ const routes: Routes = [
     path:'register',component:RegisterComponent
   },{
     path:'payhome',component:PayhomeComponent
+  },
+  {
+    path:'epayac',component:EpayaccountComponent
   }
 ];
 
