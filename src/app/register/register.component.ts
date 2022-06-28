@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     var cus_id=this.registerForm.value.cus_id
     var cus_password=this.registerForm.value.cus_password
     if(this.registerForm.valid){
-      const result=this.ds.register(cus_name,cus_address,cus_phone,cus_id,cus_password,500,0,0,0)
+      const result=this.ds.register(cus_name,cus_address,cus_phone,cus_id,cus_password,500,0,0,0,"")
       if(result){
         alert("Registered user successfully")
         this.router.navigateByUrl('login')

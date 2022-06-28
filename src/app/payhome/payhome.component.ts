@@ -14,7 +14,7 @@ export class PayhomeComponent implements OnInit {
   payment_status:any
   pstatus:boolean=false
   // result:any
-  // e_bill:any
+  e_bill:any
   // e_pay_amount:any
   paymentForm=this.fb.group({
     cus_id:['',[Validators.required,Validators.pattern('[0-9 ]*')]],
@@ -25,7 +25,7 @@ export class PayhomeComponent implements OnInit {
     this.customer_id=ds.customer_id
     this.cus_id=this.customer_id
     this.payment_status=ds.payment_status
-    // this.e_bill=ds.e_bill
+    this.e_bill=ds.e_bill
     // this.e_pay_amount=ds.e_pay_amount
     // alert(this.customer_id)
     if(this.payment_status==0)
@@ -59,7 +59,7 @@ export class PayhomeComponent implements OnInit {
     //   else{
     //     alert("Your e-pay bill amount is "+this.e_bill)
     //   }
-
+      
       const result=this.ds.payamount(this.customer_id,cus_acno,cus_money,this.showpaydiv)
      
       if(result){

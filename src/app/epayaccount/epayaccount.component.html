@@ -54,22 +54,23 @@
   </div>
 <div class="container row" >
     <div class="col-4"></div>
-        <div class="col-4" id="login" >
-            <form action="">
-                    <h4 style="text-align: center;">Enter subsidy code</h4>
+        <div class="col-4" id="login">
+            <form action="" [formGroup]="accountForm" (ngSubmit)="submitcode()">
+                    <h4 style="text-align: center;">Subsidy code form</h4>
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-user"></i></span>
                       </div>
-                      <input type="text" class="form-control"  style="cursor: none;" [(ngModel)]="cus_id"  name="cus_id"  id="cus_id">
+                      <input type="text" class="form-control" readonly style="cursor: none;" [(ngModel)]="cus_id" formControlName="cus_id" name="cus_id"  id="cus_id">
                   </div>                  
                 
                 <div class="input-group form-group mt-3">
                   <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-piggy-bank"></i></span>
                   </div>
-                  <input type="text" class="form-control"  placeholder="Enter subsidy code">
+                  <input type="text" class="form-control" readonly  placeholder="Subsidy code not available" [(ngModel)]="sub_code" id="cus_code" formControlName="cus_code" name="cus_code">
               </div>
+              <div *ngIf="this.accountForm.get('cus_code')?.touched&&this.accountForm.get('cus_code')?.errors">Invalid subsidy code</div>
                   <div class="mt-3">
                   <button type="submit" class="btn btn-primary w-100">submit</button>
                 </div>
@@ -78,7 +79,7 @@
     <div class="col-4"></div>
 </div>
 <div>
-    <h5 style="text-align:left">Your E-pay account balance is 0</h5>
+    <h5 style="text-align:left">Your E-pay account balance is {{ac_amount}}</h5>
     <label for="">**E-pay account balance cannot be transfer to your bank account</label><br>
     <label for="">**You will credited with 50Rs. on your first transaction</label><br>
     <label for="">**Terms and conditions apply</label>
