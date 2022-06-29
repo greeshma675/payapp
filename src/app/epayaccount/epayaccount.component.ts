@@ -10,36 +10,31 @@ import { DataService } from '../services/data.service';
 export class EpayaccountComponent implements OnInit {
   cus_id:any
   ac_amount:any
+  sub_amount:any
   sub_code:any
   e_bill:any
-  sub_amount:any
+  code_status:any
   accountForm=this.fb.group({
     cus_id:[''],
-    cus_code:['',[Validators.required,Validators.pattern('[0-9A-Za-z ]*')]]
+    cus_code:['']
    })
   constructor(private ds:DataService,private fb:FormBuilder) { 
     this.cus_id=ds.customer_id
     this.ac_amount=ds.e_pay_amount
     this.sub_code=ds.cus_code
     this.e_bill=ds.e_bill
-    // alert(ds.e_bill)
+    this.code_status=ds.code_status
   }
   
   ngOnInit(): void {
   }
   submitcode(){
     if(this.accountForm.valid){
-      if(this.e_bill>200&&this.e_bill<=500){
-        this.sub_amount=(this.e_bill*15)/100
-      }else if(this.e_bill>500&&this.e_bill<=800){
-        this.sub_amount=(this.e_bill*10)/100
-      }else{
-        this.sub_amount=(this.e_bill*5)/100
-      }
-    }else{ 
-      alert("Invalid subsidy code")
-    }
+      const result=this.ds.submitcode(this.cus_id,this.sub_code,this.e_bill)    
+  }else{
+    alert("Invalid form")
   }
+}
 
 }
  

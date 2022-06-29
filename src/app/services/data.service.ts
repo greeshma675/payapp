@@ -10,9 +10,11 @@ export class DataService {
   e_pay_amount:any
   payment_status:any
   cus_code:any
+  sub_amount:any
+  code_status:any
   db:any={
-    1000:{"cus_id":1000,"cus_name":"Adam","cus_address":"abc","cus_phone":123,"cus_password":1000,"e-bill":500,"e-pay-amount":500,"status":0,"payment_status":0,"sub_code":""},
-    1001:{"cus_id":1000,"cus_name":"Adam","cus_address":"bbc","cus_phone":223,"cus_password":1001,"e-bill":500,"e-pay-amount":100,"status":0,"payment_status":0,"sub_code":""}
+    1000:{"cus_id":1000,"cus_name":"Adam","cus_address":"abc","cus_phone":123,"cus_password":1000,"e-bill":500,"e-pay-amount":100,"status":0,"payment_status":0,"sub_code":"","code_status":0},
+    1001:{"cus_id":1000,"cus_name":"Adam","cus_address":"bbc","cus_phone":223,"cus_password":1001,"e-bill":500,"e-pay-amount":100,"status":0,"payment_status":0,"sub_code":"","code_status":0}
   }
     
   constructor() {
@@ -29,6 +31,7 @@ export class DataService {
         this.e_bill=db[cus_id]["e-bill"]
         this.e_pay_amount=db[cus_id]["e-pay-amount"]
         this.payment_status=db[cus_id]["payment_status"]
+        this.code_status=db[cus_id]["code_status"]
         this.saveDetails()    
         return true
       }else{
@@ -40,13 +43,13 @@ export class DataService {
       return false
     }
   }
-  register(cus_name:any,cus_address:any,cus_phone:any,cus_id:any,cus_password:any,e_bill:any,e_payamount:any,status:any,payment_status:any,cus_code:any){
+  register(cus_name:any,cus_address:any,cus_phone:any,cus_id:any,cus_password:any,e_bill:any,e_payamount:any,status:any,payment_status:any,cus_code:any,code_status:any){
     let db=this.db
     if(cus_id in db){
       alert("User already existing")
       return false
     }else{
-      db[cus_id]={cus_id,cus_name,cus_address,cus_phone,cus_password,e_bill,e_payamount,status,payment_status,cus_code}
+      db[cus_id]={cus_id,cus_name,cus_address,cus_phone,cus_password,e_bill,e_payamount,status,payment_status,cus_code,code_status}
       // this.customer_id=cus_id
       this.saveDetails()
       return true
@@ -82,21 +85,22 @@ export class DataService {
           db[cus_id]["e-pay-amount"]+=50
           this.e_pay_amount=db[cus_id]["e-pay-amount"]
           db[cus_id]["e-bill"]=0
-          this.e_bill=db[cus_id]["e-bill"]
-          db[cus_id]["status"]=1
-          db[cus_id]["payment_status"]=1
-          this.payment_status=db[cus_id]["payment_status"]
-          this.saveDetails()
+          // this.e_bill=db[cus_id]["e-bill"]
+          // db[cus_id]["payment_status"]=1
+          // this.payment_status=db[cus_id]["payment_status"]
           // this.saveDetails()
+          db[cus_id]["status"]=1
+          
           alert("Your e-pay account credited with 50Rs. on your first payment")
         }else{
           db[cus_id]["e-bill"]=0
-          this.e_bill=db[cus_id]["e-bill"]
+          // this.e_bill=db[cus_id]["e-bill"]
+          // db[cus_id]["payment_status"]=1
+          // this.payment_status=db[cus_id]["payment_status"]
+        }
           db[cus_id]["payment_status"]=1
           this.payment_status=db[cus_id]["payment_status"]
-        this.saveDetails()
-        }
-        
+          this.saveDetails()
         return true
       }
       else
@@ -108,24 +112,28 @@ export class DataService {
       if(cus_money<=this.e_pay_amount){
         if(db[cus_id]["status"]==0){
           db[cus_id]["e-pay-amount"]+=50
-          this.e_pay_amount=db[cus_id]["e-pay-amount"]-this.e_bill
+          db[cus_id]["e-pay-amount"]=db[cus_id]["e-pay-amount"]-this.e_bill
+          this.e_pay_amount=db[cus_id]["e-pay-amount"]
+
           db[cus_id]["e-bill"]=0
-          this.e_bill=db[cus_id]["e-bill"]
+          // this.e_bill=db[cus_id]["e-bill"]
           db[cus_id]["status"]=1
-          db[cus_id]["payment_status"]=1
-          this.payment_status=db[cus_id]["payment_status"]
-          this.saveDetails()
+          // db[cus_id]["payment_status"]=1
+          // this.payment_status=db[cus_id]["payment_status"]
           // this.saveDetails()
           alert("Your e-pay account credited with 50Rs. on your first payment")
         }else{
           db[cus_id]["e-bill"]=0
-          this.e_bill=db[cus_id]["e-bill"]
-          db[cus_id]["payment_status"]=1
-          this.payment_status=db[cus_id]["payment_status"]
-          this.saveDetails()
+          // this.e_bill=db[cus_id]["e-bill"]
+          db[cus_id]["e-pay-amount"]=db[cus_id]["e-pay-amount"]-this.e_bill
+          this.e_pay_amount=db[cus_id]["e-pay-amount"]
+          // db[cus_id]["payment_status"]=1
+          // this.payment_status=db[cus_id]["payment_status"]
           // this.saveDetails()
         }
-       
+        db[cus_id]["payment_status"]=1
+        this.payment_status=db[cus_id]["payment_status"]
+        this.saveDetails()
         return true
       }else{
       alert("Your e-pay-account has only "+this.e_pay_amount+" Rs.")
@@ -138,7 +146,36 @@ export class DataService {
   }
 
 }
- 
+ submitcode(cus_id:any,cus_code:any,e_bill:any){
+  let db=this.db
+  // alert(cus_code)
+  if(cus_code!=null){
+    if(this.code_status!=1){
+    if(cus_code=="sub15"){
+        // alert(this.e_bill)
+        this.sub_amount=(this.e_bill*15)/100
+        // alert(this.sub_amount)
+    }else if(cus_code=="sub10"){
+        this.sub_amount=(this.e_bill*10)/100
+      }else if(cus_code=="sub5"){
+        this.sub_amount=(this.e_bill*5)/100
+      }
+      alert("Your e-pay account credited with "+this.sub_amount+"Rs.")
+      db[cus_id]["e-pay-amount"]+=this.sub_amount
+      this.e_pay_amount=db[cus_id]["e-pay-amount"]
+      db[cus_id]["code_status"]=1
+      this.code_status=1
+      this.saveDetails()
+      window.location.reload()
+      return true
+    }else{
+      alert("Code already used")
+      return false
+    }}else{
+      alert("No code available")
+      return false
+    }
+ }
   saveDetails(){
     if(this.db){
       localStorage.setItem("database",JSON.stringify(this.db))
@@ -157,6 +194,9 @@ export class DataService {
     }
     if(this.payment_status){
       localStorage.setItem("payment_status",JSON.stringify(this.payment_status))
+    }
+    if(this.code_status){
+      localStorage.setItem("code_status",JSON.stringify(this.code_status))
     }
   }
   getDetails(){
@@ -177,6 +217,9 @@ export class DataService {
     }
     if(localStorage.getItem("payment_status")){
       this.payment_status=JSON.parse(localStorage.getItem("payment_status")||'')
+    }
+    if(localStorage.getItem("code_status")){
+      this.code_status=JSON.parse(localStorage.getItem("code_status")||'')
     }
   }
 }

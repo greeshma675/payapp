@@ -64,6 +64,7 @@ export class PayhomeComponent implements OnInit {
      
       if(result){
           alert("Payment successfull")
+          window.location.reload()
       }
     }
     else{
