@@ -98,6 +98,24 @@
 </div>
 <div>
   <h4 *ngIf="!pstatus">No new bills available</h4>
+  <form action="" *ngIf="!pstatus">
+    <div>
+      <label for="">Customer ID:</label>
+      <label for="">{{r_cus_id}}</label><br>
+      <label for="">Name:</label>
+      <label for="">{{r_cus_name}}</label><br>
+      <label for="">Bill amount:</label>
+      <label for="">{{r_bill_amount}} Rs.</label><br>
+      <label for="">Type of payment:</label>
+      <label for="">{{r_cus_name}}</label><br>
+      <label for="">Subsidy amount:</label>
+      <label for="">{{r_sub}} Rs.</label><br>
+      <label for="">E-pay account balance:</label>
+      <label for="">{{r_epay_balance}}</label><br>
+      <label for="">Amount paid:</label>
+      <label for="">{{r_bill_amount-r_sub}} Rs.(Included subsidy amount)</label>
+    </div>
+  </form>
 </div>
 </body>
 
